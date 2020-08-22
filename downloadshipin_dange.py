@@ -4,6 +4,8 @@
 @time :2019/6/16 15:32
 @desc :
 """
+#-*- coding:utf-8 -*-
+
 import requests
 import threading
 import datetime
@@ -42,11 +44,13 @@ def Handler(start, end, url, filename):
         print("下载进度：%.2f" % (count / len(filename)))
 
 
-def download_file(url,name,num_thread=100):
+def download_file(url,num_thread=100):
     cwd = os.getcwd()  # 获取当前目录即dir目录下
-    print("------------------------current working directory------------------" + cwd)
-    f = open(name, 'r', encoding='GBK')
+    print("------------------------xiazai****current working directory------------------" + cwd)
+    f = open('index.m3u8', 'r', encoding='utf-8')
+    # f.read().decode('utf-8')
     text_list = f.readlines()
+    # print('text_list:',text_list)
     ss_list = []
     sss_list = []
     s_list = []
@@ -71,7 +75,7 @@ def download_file(url,name,num_thread=100):
         s_list.append(k)
 
 
-    print('s_list',s_list)
+    # print('s_list:',s_list)
 
 
     f.close()
@@ -97,59 +101,52 @@ def download_file(url,name,num_thread=100):
             continue
         t.join()
 
-    cmd = hebing_ts.before_merge(name)
 
 
 
-# def before_merge():
-#     cwd = os.getcwd()  # 获取当前目录即dir目录下
-#     print("------------------------current working directory------------------" + cwd)
-#     f = open('index.m3u8', 'r', encoding='utf-8')
-#     text_list = f.readlines()
-#     print(text_list)
-#     files = []
-#     for i in text_list:
-#         if i.find('#EX') == -1:
-#             files.append(i)
-#     f.close()
-#     tmp = []
-#     for file in files[0:568]:
-#         tmp.append(file.replace("\n", ""))
-#         # 合并ts文件
-#     # os.chdir("ts/")
-#     shell_str = '+'.join(tmp)
-#     # print(shell_str)
-#     shell_str = 'copy /b ' + shell_str + str(geturl.geturl(url2)[1])+ ' 5.mp4' + '\n' + 'del *.ts'
-#     return shell_str
-#
-#
-# def wite_to_file(cmdString):
-#     cwd = os.getcwd()  # 获取当前目录即dir目录下
-#     print("------------------------current working directory------------------" + cwd)
-#     f = open("combined.cmd", 'w')
-#     f.write(cmdString)
-#     f.close()
+def before_merge():
+    cwd = os.getcwd()  # 获取当前目录即dir目录下
+    print("------------------------hebing*****current working directory------------------" + cwd)
+    f = open('index.m3u8', 'r', encoding='utf-8')
+    text_list = f.readlines()
+    print(type(text_list),text_list)
+    files = []
+    for i in text_list:
+        if i.find('#EXTINF:') == -1:
+            print('i:',i)
+            files.append(i)
+    print('files:',files)
+    f.close()
+    tmp = []
+    for file in files[0:568]:
+        tmp.append(file.replace("\n", ""))
+    print('tmp:',tmp)
+        # 合并ts文件
+    # os.chdir("ts/")
+    shell_str = '+'.join(tmp)
+    print(shell_str)
+    shell_str = 'copy /b ' + shell_str + ' 5.mp4' + '\n' + 'del *.ts'
+    os.system(shell_str)
+    print(shell_str)
+    return shell_str
+
+
+def wite_to_file(cmdString):
+    cwd = os.getcwd()  # 获取当前目录即dir目录下
+    print("------------------------current working directory------------------" + cwd)
+    f = open("combined.cmd", 'w')
+    f.write(cmdString)
+    f.close()
 
 
 if __name__ == '__main__':
-    url2 = 'https://www.bym6zv1e3485q896y0l134bag002.top:52789/index.php/vod/play/id/125103/sid/1/nid/1.html'
-    x = geturl.geturl(url2)
-    print('x[0]:',x[0])
-    print('x[1]:',x[1])
-    for i in x[0]:
-        u = getlist.getlist(i)
-        print('u:',u)
-        url = u[0]
-        print('url:',url)
-        namepian =u[1]
-        # print(i[0],i[1])
+    url1 = 'https://z.weilekangnet.com:59666/data7/B673899C18A31B68/80D1AB4DB85016E6/360p/'
 
-        start = datetime.datetime.now().replace(microsecond=0)
-        download_file(url,namepian)
-        end = datetime.datetime.now().replace(microsecond=0)
-        print(end - start)
-    # 结束下载
-    # 合并小文件
-    #     cmd = before_merge();
-    # # 把合并命令写到文件中
-    #     wite_to_file(cmd);
+    # namepian = 'index.m3u8'
+
+
+    # download_file(url1)
+    
+    before_merge()
+
+

@@ -4,6 +4,8 @@
 @time :2019/6/16 15:32
 @desc :
 """
+# -*- coding:utf-8 -*-
+
 import requests
 import threading
 import datetime
@@ -18,7 +20,7 @@ import geturl,getlist,downloadshipin
 def before_merge(name):
     cwd = os.getcwd()  # 获取当前目录即dir目录下
     # print("------------------------current working directory------------------" + cwd)
-    f = open('index.m3u8', 'r', encoding='utf-8')
+    f = open('indexhtml.m3u8', 'r', encoding='GBK')
     text_list = f.readlines()
     # print(text_list)
     files = []
