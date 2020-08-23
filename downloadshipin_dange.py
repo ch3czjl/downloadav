@@ -10,10 +10,10 @@ import requests
 import threading
 import datetime
 import os
-import getlist
-import geturl
-import urllib3
-import hebing_ts,headers
+# import getlist
+# import geturl
+# import urllib3
+# import hebing_ts,headers
 
 count = 0;
 
@@ -22,12 +22,12 @@ def Handler(start, end, url, filename):
     headers_m3u8 = {
         'Host': 'z.weilekangnet.com:59666',
         'Connection': 'keep-alive',
-        'Origin': 'https://www.bym6zv1e3485q896y0l134bag002.top:52789',
+        'Origin': 'https://www.bylj5a9019w0ccl9u8j88983w23.xyz:52789',
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36',
         'Accept': '*/*',
         'Sec-Fetch-Site': 'cross-site',
         'Sec-Fetch-Mode': 'cors',
-        'Referer': 'https://www.bym6zv1e3485q896y0l134bag002.top:52789/static/player/dplayer.html?v=1',
+        'Referer': 'https://www.bylj5a9019w0ccl9u8j88983w23.xyz:52789/static/player/dplayer.html?v=1',
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'zh-CN,zh-HK;q=0.9,zh;q=0.8,en;q=0.7',
     }
@@ -50,7 +50,7 @@ def download_file(url,num_thread=100):
     f = open('index.m3u8', 'r', encoding='utf-8')
     # f.read().decode('utf-8')
     text_list = f.readlines()
-    # print('text_list:',text_list)
+    print('text_list:',text_list)
     ss_list = []
     sss_list = []
     s_list = []
@@ -104,7 +104,7 @@ def download_file(url,num_thread=100):
 
 
 
-def before_merge():
+def before_merge(name):
     cwd = os.getcwd()  # 获取当前目录即dir目录下
     print("------------------------hebing*****current working directory------------------" + cwd)
     f = open('index.m3u8', 'r', encoding='utf-8')
@@ -125,7 +125,7 @@ def before_merge():
     # os.chdir("ts/")
     shell_str = '+'.join(tmp)
     print(shell_str)
-    shell_str = 'copy /b ' + shell_str + ' 5.mp4' + '\n' + 'del *.ts'
+    shell_str = 'copy /b ' + shell_str + ' '+ name +'.mp4' + '\n' + 'del *.ts'
     os.system(shell_str)
     print(shell_str)
     return shell_str
@@ -140,12 +140,14 @@ def wite_to_file(cmdString):
 
 
 if __name__ == '__main__':
-    url1 = 'https://z.weilekangnet.com:59666/data7/B673899C18A31B68/80D1AB4DB85016E6/360p/'
+    url1 = 'https://z.weilekangnet.com:59666/data7/91C8DAAE13BEEF8A/DE07819EAFF0F413/360p/'
 
     # namepian = 'index.m3u8'
+    start = datetime.datetime.now().replace(microsecond=0)
+    download_file(url1)
 
+    end = datetime.datetime.now().replace(microsecond=0)
 
-    # download_file(url1)
     
     before_merge()
 

@@ -20,12 +20,12 @@ def Handler(start, end, url, filename):
     headers_m3u8 = {
         'Host': 'z.weilekangnet.com:59666',
         'Connection': 'keep-alive',
-        'Origin': 'https://www.bym6zv1e3485q896y0l134bag002.top:52789',
+        'Origin': 'https://www.bylj5a9019w0ccl9u8j88983w23.xyz:52789',
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36',
         'Accept': '*/*',
         'Sec-Fetch-Site': 'cross-site',
         'Sec-Fetch-Mode': 'cors',
-        'Referer': 'https://www.bym6zv1e3485q896y0l134bag002.top:52789/static/player/dplayer.html?v=1',
+        'Referer': 'https://www.bylj5a9019w0ccl9u8j88983w23.xyz:52789/static/player/dplayer.html?v=1',
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'zh-CN,zh-HK;q=0.9,zh;q=0.8,en;q=0.7',
     }
@@ -132,7 +132,7 @@ def download_file(url,name,num_thread=100):
 
 
 if __name__ == '__main__':
-    url2 = 'https://www.bym6zv1e3485q896y0l134bag002.top:52789/index.php/vod/play/id/125103/sid/1/nid/1.html'
+    url2 = 'https://www.bylj5a9019w0ccl9u8j88983w23.xyz:52789/index.php/vod/type/id/1.html'
     x = geturl.geturl(url2)
     print('x[0]:',x[0])
     print('x[1]:',x[1])

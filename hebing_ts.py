@@ -4,39 +4,57 @@
 @time :2019/6/16 15:32
 @desc :
 """
-# -*- coding:utf-8 -*-
+# -- coding: utf-8 --
 
-import requests
-import threading
-import datetime
+
 import os
-import getlist
-import geturl
-import urllib3
 
-count = 0;
-import geturl,getlist,downloadshipin
+
+
 
 def before_merge(name):
     cwd = os.getcwd()  # 获取当前目录即dir目录下
-    # print("------------------------current working directory------------------" + cwd)
-    f = open('indexhtml.m3u8', 'r', encoding='GBK')
+    print("------------------------current working directory------------------" + cwd)
+    f = open('index.m3u8', 'r', encoding='utf-8')
     text_list = f.readlines()
-    # print(text_list)
-    files = []
+    # print(type(text_list),text_list)
+    ss_list = []
+    sss_list = []
+    s_list = []
+    # print(len(text_list),type(text_list),text_list)
     for i in text_list:
-        if i.find('#EX') == -1:
-            files.append(i)
+        # print(i,type(i))
+        if i.find('#EXTINF') == -1:
+            # print(i)
+            ss_list.append(i)
+            # print(s_list)
+    # print(ss_list)
+    for j in ss_list:
+        # print('j',type(j),j)
+        if j.find('0out360p')!= -1:
+            # j.replace(''''\n''','')
+            # print('quchu',j)
+            sss_list.append(j)
+    # s_list = sss_list.replace('\n','')
+    for k in sss_list:
+        # print('k',k,type(k))
+        k.strip()
+        s_list.append(k)
+    # print('s_list:',s_list)
     f.close()
     tmp = []
-    for file in files[0:568]:
+    for file in s_list:
         tmp.append(file.replace("\n", ""))
         # 合并ts文件
-    # os.chdir("ts/")
+    # os.chdir("0out360p")
+    # print('tmp:',tmp)
     shell_str = '+'.join(tmp)
     # print(shell_str)
-    shell_str = 'copy /b ' + shell_str + ' ' + name + '\n' + 'del *.ts'
+    shell_str = 'copy /b ' + shell_str + ' ' + name + '.mp4'
+    shell_str2 = 'del *.ts'
+    # print('shell_str:',shell_str)
     os.system(shell_str)
+    os.system(shell_str2)
     return shell_str
 
 
@@ -47,10 +65,7 @@ def wite_to_file(cmdString):
     f.write(cmdString)
     f.close()
 
-url2 = 'https://www.bytpcl6w9j0w9ku52o.fun:52789/index.php/vod/type/id/1/page/3.html'
-name = geturl.geturl(url2)[1][0] + '.mp4'
-# print(type(name),name)
-cmd = before_merge(name)
-# 把合并命令写到文件中
-# wite_to_file(cmd)
+
+cmd = before_merge('asdfasdf')
+
 

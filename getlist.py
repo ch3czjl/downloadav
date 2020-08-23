@@ -1,4 +1,4 @@
-import requests,headers
+import requests
 # import threading
 # import datetime
 import os
@@ -29,3 +29,7 @@ def getlist(urlxuhao):
     text_list = f.readlines()
     print('成功写入',text_list)
     return url1,filename
+
+def get_xiazai_url(xuhao):
+    xiazai_url = 'https://z.weilekangnet.com:59666/data7/91C8DAAE13BEEF8A/'+ xuhao +'/360p/'
+    return xiazai_url
