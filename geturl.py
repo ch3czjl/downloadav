@@ -63,19 +63,23 @@ def geturl(url2,headers_page):
     for q in range(0,len(title_list),2):
         # print(title_list[q])
         title_list_dan.append(title_list[q])
-    # print(title_list_dan)
 
-    # return jpg_list,title_list
-    # print(jpg_list,title_list_dan)
+    for jishu in range(len(jpg_list)):
+        if jishu % 2 == 0:
+            del jpg_list[0]
+        else:
+            jpg_list.append(jpg_list[0])
+            del jpg_list[0]
+
     return jpg_list,title_list_dan
 
-# url2 = daili.url_yemian
-# headers_page = daili.headers_page
-# x = geturl(url2,headers_page)[0]
-# y = geturl(url2,headers_page)[1]
-# # print(x[0],type(x[0]))
-# print(x)
-# print(y)
+url2 = daili.url_yemian
+headers_page = daili.headers_page
+x = geturl(url2,headers_page)[0]
+y = geturl(url2,headers_page)[1]
+# print(x[0],type(x[0]))
+print(x)
+print(y)
 
 
 

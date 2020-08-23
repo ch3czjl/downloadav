@@ -38,7 +38,7 @@ def Handler(start, end, url, filename):
         requests.packages.urllib3.disable_warnings()
         r = requests.get(url + i.replace("\n",""),headers=headers,stream=True,verify=False,)
 
-        with open("C:\\python\\zhangjl\\downloadav\\" + i.replace("\n", ""), "wb") as code:
+        with open("C:\\python\\downloadav\\" + i.replace("\n", ""), "wb") as code:
             code.write(r.content)
         count = count + 1
         print("下载进度：%.2f" % (count / len(filename)))
@@ -50,7 +50,7 @@ def download_file(url,num_thread=100):
     f = open('index.m3u8', 'r', encoding='utf-8')
     # f.read().decode('utf-8')
     text_list = f.readlines()
-    print('text_list:',text_list)
+    # print('text_list:',text_list)
     ss_list = []
     sss_list = []
     s_list = []
@@ -82,7 +82,7 @@ def download_file(url,num_thread=100):
     file_size = len(s_list)
 
     # 启动多线程写文件
-    part = file_size // num_thread  # 如果不能整除，最后一块应该多几个字节
+    part = file_size // num_thread // 2  # 如果不能整除，最后一块应该多几个字节
     for i in range(num_thread):
         start = part * i
         if i == num_thread - 1:  # 最后一块

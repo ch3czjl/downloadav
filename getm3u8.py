@@ -13,6 +13,6 @@ def getm3u8(url,headers):
     text_list = []
     f = open('index.m3u8', 'r')
     text_list = f.read()
-    # print(text_list)
-    return text_list
+    print(text_list)
+    return url2
 

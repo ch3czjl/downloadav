@@ -14,7 +14,7 @@ import os
 
 def before_merge(name):
     cwd = os.getcwd()  # 获取当前目录即dir目录下
-    print("------------------------current working directory------------------" + cwd)
+    print("----------------------开始合并--current working directory------------------" + cwd)
     f = open('index.m3u8', 'r', encoding='utf-8')
     text_list = f.readlines()
     # print(type(text_list),text_list)
@@ -50,7 +50,7 @@ def before_merge(name):
     # print('tmp:',tmp)
     shell_str = '+'.join(tmp)
     # print(shell_str)
-    shell_str = 'copy /b ' + shell_str + ' ' + name + '.mp4'
+    shell_str = 'copy /b ' + shell_str + ' ' + name[:6] + '.mp4'
     shell_str2 = 'del *.ts'
     # print('shell_str:',shell_str)
     os.system(shell_str)
@@ -66,6 +66,6 @@ def wite_to_file(cmdString):
     f.close()
 
 
-cmd = before_merge('asdfasdf')
+# cmd = before_merge('asdfasdf')
 
 
