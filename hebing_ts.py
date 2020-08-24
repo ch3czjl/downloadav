@@ -66,6 +66,6 @@ def wite_to_file(cmdString):
     f.close()
 
 
-# cmd = before_merge('asdfasdf')
+# cmd = before_merge('国产剧情')
 
 

@@ -38,7 +38,10 @@ def Handler(start, end, url, filename):
         requests.packages.urllib3.disable_warnings()
         r = requests.get(url + i.replace("\n",""),headers=headers,stream=True,verify=False,)
 
-        with open("C:\\python\\downloadav\\" + i.replace("\n", ""), "wb") as code:
+        #sushe
+        # with open("C:\\python\\downloadav\\" + i.replace("\n", ""), "wb") as code:
+
+        with open("C:\\python\\zhangjl\\downloadav\\" + i.replace("\n", ""), "wb") as code:
             code.write(r.content)
         count = count + 1
         print("下载进度：%.2f" % (count / len(filename)))
